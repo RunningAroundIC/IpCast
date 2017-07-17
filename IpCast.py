@@ -20,16 +20,24 @@ def getIpAddress(network):
 hostname = socket.gethostname()
 ip = (getIpAddress('wlan0'.encode('utf-8')))
 
-MESSAGE = "Pi name: " + hostname + ", IP: " + ip
+MESSAGE = "Pi Name: " + hostname + ", IP: " + ip
 
-count = 12
+count = 30
 msg = 1
 
+print("")
+print("*******************************************************")
+print("* Welcome to your local Raspberry Pi weather station! *")
+print("* This RPi sends message for 1 min when booting,      *")
+print("* the message for this RPi is as follows:             *")
+print("*",MESSAGE,"                   *")
+print("*******************************************************")
+print("")
 print("Broadcasting Raspberry Pi info:")
 while count > 0:
 	s.sendto(bytes(MESSAGE,'utf-8'),(UDP_IP, UDP_PORT))
 	print("Message " + str(msg) + " Send")
-	time.sleep(5)
+	time.sleep(2)
 	count -= 1
 	msg += 1
 
